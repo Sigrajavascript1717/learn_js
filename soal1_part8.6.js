@@ -65,3 +65,31 @@ function tentukanDeretAritmatika(arr) {
   console.log(tentukanDeretAritmatika([2, 4, 6, 8])); // true
   console.log(tentukanDeretAritmatika([2, 6, 18, 54])); // false
   console.log(tentukanDeretAritmatika([1, 2, 3, 4, 7, 9])); // false
+
+function tentukanDeretGeometri(arr) {
+  // Periksa apakah array memiliki kurang dari 2 elemen
+  if (arr.length < 2) {
+    return false;
+  }
+
+  // Hitung rasio antara dua elemen pertama
+  const rasio = arr[1] / arr[0];
+
+  // Iterasi melalui array dimulai dari elemen kedua
+  for (let i = 1; i < arr.length - 1; i++) {
+    // Jika rasio antar elemen berturut-turut tidak sama dengan rasio awal, kembalikan false
+    if (arr[i + 1] / arr[i] !== rasio) {
+      return false;
+    }
+  }
+
+  // Jika perulangan selesai tanpa mengembalikan false, array tersebut adalah deret geometri
+  return true;
+}
+
+// TEST CASES
+console.log(tentukanDeretGeometri([1, 3, 9, 27, 81])); // true
+console.log(tentukanDeretGeometri([2, 4, 8, 16, 32])); // true
+console.log(tentukanDeretGeometri([2, 4, 6, 8])); // false
+console.log(tentukanDeretGeometri([2, 6, 18, 54])); // true
+console.log(tentukanDeretGeometri([1, 2, 3, 4, 7, 9])); // false
